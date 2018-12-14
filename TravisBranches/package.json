@@ -1,0 +1,23 @@
+{
+  "name": "travisbranches",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "prestart": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonymanpro/TravisBranches.git"
+  },
+  "author": "Anthony Chvarria Cespedes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonymanpro/TravisBranches/issues"
+  },
+  "homepage": "https://github.com/tonymanpro/TravisBranches#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

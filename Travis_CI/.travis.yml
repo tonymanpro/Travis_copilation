@@ -1,0 +1,23 @@
+language: csharp
+solution: Travis_CI.sln
+sudo: true
+dist: trusty
+install:
+  - nuget restore Travis_CI.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+jobs:
+  include:
+    - stage: deploy
+      before_script: msbuild /p:Configuration=Release Travis_CI.sln
+      script: msbuild /p:Configuration=Release Travis_CI.sln /t:publish /p:DeployOnBuild=true /p:PublishRootDir="\\home\travis\build\tonymanpro\Travis_CI\Published" /p:PublishProfile=PublishFile.pubxml
+      after_script:
+        - cd \\home\travis\build\tonymanpro\Travis_CI
+        - ls -a
+      deploy:
+        provider: gcs
+        access_key_id: "[KEY_ID]"
+        secret_access_key: "[SECRET_KEY]"
+        bucket: travis_ci
+        acl: public-read
+        skip_cleanup: true
+        local-dir: $TRAVIS_BUILD_DIR

@@ -1,0 +1,1 @@
+Layla view for BN Id Validator

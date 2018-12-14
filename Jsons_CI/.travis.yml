@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '7'
+sudo: true
+dist: trusty
+script: npm install && npm run build
+after_script:
+  - ls -a
+deploy:
+  provider: gcs
+  access_key_id: [KEY_ID]
+  secret_access_key: [SECRET_KEY]
+  bucket: travis_ci
+  acl: public-read
+  skip_cleanup: true
+  local-dir: build
+before_install:
+- openssl aes-256-cbc -K $encrypted_cc7ad81ab2cb_key -iv $encrypted_cc7ad81ab2cb_iv
+  -in [CLIENT_SECRET].json.enc -out [CLIENT_SECRET].json -d

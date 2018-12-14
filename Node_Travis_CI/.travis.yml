@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "7"
+sudo: true
+dist: trusty
+env:
+  - TEST_DIR=[DIRECTORY01]
+  - TEST_DIR=[DIRECTORY02]
+script: cd $TEST_DIR && npm install && npm run build
+after_script:
+  - cd build
+  - ls -a
+  - rm -f index.html
+  - ls -a
+deploy:
+  provider: gcs
+  access_key_id: "[KEY_ID]"
+  secret_access_key: "[SECRET_KEY]"
+  bucket: travis_ci
+  acl: public-read
+  skip_cleanup: true
+  local-dir: build

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Layla view</title>
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="content"></div>
+
+  <script>
+    var data = [{
+        "Code": "7167533",
+        "Text": "Lugar de Votacion del Investigado",
+        "Options": [
+          "Provincia: CONSULADO, Canton: NORUEGA, Distrito: OSLO",
+          "Provincia: ALAJUELA, Canton: UPALA, Distrito: BRASILIA",
+          "Provincia: ALAJUELA, Canton: PALMARES, Distrito: ESQUIPULAS",
+          "Provincia: ALAJUELA, Canton: GRECIA, Distrito: RINCON DE SALAS"
+        ],
+
+        "ResponseIndex": 4
+      },
+      {
+        "Code": "7167534",
+        "Text": "Cuál era su teléfono celular en la fecha Agosto 2011",
+        "Options": [
+          "86769652",
+          "87372086",
+          "84134870",
+          "82581742"
+        ],
+        "ResponseIndex": 1
+      },
+      {
+        "Code": "7167535",
+        "Text": "Nombre de la Madre del Investigado",
+        "Options": [
+          "MARIANELA",
+          "MARIA ISABEL",
+          "MARGOT BELLONI",
+          "IRIS MARIA"
+        ],
+        "ResponseIndex": 1
+      },
+      {
+        "Code": "7167536",
+        "Text": "Cuántas Motos se encuentran registrados a su nombre",
+        "Options": [
+          "1",
+          "3",
+          "0",
+          "2"
+        ],
+        "ResponseIndex": 3
+      }];
+    window.onload = function () {
+      window.attachApp("equifax", 'http://www.url/api', data, "authorization");
+    }
+  </script>
+</body>
+</html>

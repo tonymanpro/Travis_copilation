@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+- '7'
+sudo: true
+dist: trusty
+script: true
+deploy:
+  provider: gcs
+  access_key_id: [KEY_ID]
+  secret_access_key: [SECRET_KEY]
+  bucket: travis_ci
+  acl: public-read
+  skip_cleanup: true
+  notifications:
+    email:
+      recipients:
+        - [EMAIL_01]
+        - [EMAIL_02]
+    on_success: never # default: change
+    on_failure: always # default: always
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
+  on:
+    branch: master
+after_success: if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash merge.sh $USERNAME
+  $PASSWORD $GITHUB_SECRET_TOKEN; fi
+env:
+  global:
+  - secure: [KEY_01]
+  - secure: [KEY_02]
+  - secure: [KEY_03]
